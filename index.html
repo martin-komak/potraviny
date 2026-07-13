@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cesta hrdinov SNP a potraviny</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <p class="eyebrow">Mapa Slovenska</p>
+        <h1>Cesta hrdinov SNP a potraviny po trase</h1>
+        <p class="lead">
+          Interaktivna mapa nacita trasu z OpenStreetMap relacie a zobrazi vsetky
+          OSM potraviny v nastavenej vzdialenosti od chodnika.
+        </p>
+
+        <section class="panel controls">
+          <label for="distanceFilter">Maximalna vzdialenost potravin od trasy</label>
+          <select id="distanceFilter">
+            <option value="500">500 m</option>
+            <option value="1000">1 km</option>
+            <option value="2000" selected>2 km</option>
+          </select>
+          <button id="reloadButton" type="button">Obnovit data</button>
+        </section>
+
+        <section class="panel stats">
+          <div class="stat-card">
+            <span class="stat-label">Dlzka trasy</span>
+            <strong id="routeLength">-</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Najdene potraviny</span>
+            <strong id="shopCount">-</strong>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="panel-title">Stav</p>
+          <p id="statusText" class="status-text">Pripravene na nacitanie mapy.</p>
+        </section>
+
+        <section class="panel legend">
+          <p class="panel-title">Co mapa ukazuje</p>
+          <ul>
+            <li>cervena linia: Cesta hrdinov SNP</li>
+            <li>zlte body: potraviny z OSM</li>
+            <li>zoznam je obmedzeny na objekty evidovane v OSM</li>
+          </ul>
+        </section>
+
+        <section class="panel list-panel">
+          <div class="list-header">
+            <p class="panel-title">Zoznam potravin</p>
+            <span id="shopSummary" class="muted-text">-</span>
+          </div>
+          <div id="shopList" class="shop-list"></div>
+        </section>
+      </aside>
+
+      <main class="map-panel">
+        <div id="map"></div>
+      </main>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

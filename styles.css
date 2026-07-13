@@ -1,0 +1,236 @@
+:root {
+  color-scheme: light;
+  --bg: #f3efe4;
+  --panel: rgba(255, 251, 242, 0.92);
+  --panel-border: rgba(88, 62, 34, 0.15);
+  --ink: #1f1c17;
+  --muted: #665a4a;
+  --accent: #b33b24;
+  --accent-soft: #f0b462;
+  --map-shadow: 0 18px 45px rgba(55, 39, 16, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(240, 180, 98, 0.45), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(179, 59, 36, 0.22), transparent 30%),
+    linear-gradient(135deg, #eee4ce 0%, #f5f1e8 48%, #e4efe7 100%);
+}
+
+.page-shell {
+  display: grid;
+  grid-template-columns: minmax(320px, 430px) 1fr;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar,
+.map-panel {
+  min-height: calc(100vh - 40px);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--panel-border);
+  border-radius: 28px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--map-shadow);
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 0.98;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--muted);
+}
+
+.panel {
+  padding: 16px;
+  border: 1px solid rgba(88, 62, 34, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.controls {
+  display: grid;
+  gap: 10px;
+}
+
+.controls label,
+.panel-title,
+.stat-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+select,
+button {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(88, 62, 34, 0.16);
+  border-radius: 14px;
+  font: inherit;
+}
+
+button {
+  border: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #b33b24, #d86d38);
+  cursor: pointer;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 248, 234, 0.9);
+}
+
+.stat-card strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+}
+
+.status-text,
+.muted-text,
+.legend ul,
+.shop-meta {
+  color: var(--muted);
+}
+
+.legend ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.list-panel {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.shop-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  max-height: 38vh;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.shop-item {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(249, 244, 232, 0.9);
+  border: 1px solid rgba(88, 62, 34, 0.1);
+}
+
+.shop-item button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+}
+
+.shop-name {
+  display: block;
+  font-weight: 700;
+}
+
+.shop-meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.map-panel {
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: var(--map-shadow);
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 40px);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #fff9ef;
+}
+
+.popup-title {
+  margin: 0 0 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+@media (max-width: 980px) {
+  .page-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  .map-panel,
+  #map {
+    min-height: auto;
+  }
+
+  #map {
+    height: 70vh;
+  }
+
+  .shop-list {
+    max-height: 26vh;
+  }
+}
